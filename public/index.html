@@ -65,6 +65,7 @@
         .logo-icon {
             width: 50px;
             height: 50px;
+            mix-blend-mode: lighten; /* Remove o fundo preto da imagem */
         }
 
         .logo {
@@ -230,7 +231,9 @@
             max-width: 450px;
             height: auto;
             animation: float 3s ease-in-out infinite;
-            filter: drop-shadow(0 20px 40px rgba(255, 20, 147, 0.3));
+            /* filter: drop-shadow(0 20px 40px rgba(0, 246, 255, 0.2)); */ /* Sombra removida */
+            mix-blend-mode: lighten; /* Remove o fundo preto da imagem */
+            /* Removido background-color, padding e border-radius */
         }
 
         @keyframes float {
@@ -392,7 +395,9 @@
             max-width: 400px;
             height: auto;
             animation: float 3s ease-in-out infinite;
-            animation-delay: 0.5s;
+            animation-delay: 0.5s; /* Manter o delay da animação */
+            mix-blend-mode: lighten; /* Remove o fundo preto da imagem */
+            /* Removido background-color, padding e border-radius */
         }
 
         /* Hashtags Section */
@@ -468,38 +473,41 @@
         }
 
         .social-btn {
-            background: var(--card-bg);
+            background: transparent;
             padding: 1rem 2rem;
             border-radius: 12px;
             color: var(--text-primary);
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s;
-            border: 2px solid transparent;
+            border: 2px solid var(--card-bg);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
         }
 
         .social-btn:hover {
             border-color: var(--accent-cyan);
-            background: rgba(0, 246, 255, 0.1);
             transform: translateY(-3px);
+            color: #fff;
         }
 
-        /* Dashboard Section */
-        .dashboard-section {
-            padding: 6rem 3rem;
-            background: var(--bg-primary);
+        .social-btn.linkedin:hover { border-color: #0A66C2; background: #0A66C2; }
+        .social-btn.instagram:hover { border-color: #E1306C; background: #E1306C; }
+        .social-btn.twitter:hover { border-color: #1DA1F2; background: #1DA1F2; }
+
+        .social-btn .icon {
+            font-size: 1.2rem;
         }
 
-        .dashboard-container {
+        /* Cadastro Section - Estilos específicos */
+        .cadastro-section {
+            background: var(--bg-secondary);
+        }
+
+        .cadastro-section .form-container {
             max-width: 600px;
             margin: 0 auto;
-        }
-
-        .dashboard-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: var(--accent-cyan);
         }
 
         .form-container {
@@ -684,6 +692,13 @@
             .form-container {
                 padding: 2rem 1.5rem;
             }
+
+            .social-links {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 0 1rem; /* Adiciona um respiro nas laterais */
+            }
+            .social-btn { width: 100%; justify-content: center; }
         }
     </style>
 </head>
@@ -692,7 +707,7 @@
     <header>
         <nav>
             <div class="logo-container">
-                <img src="images/logo-icon.png" alt="NeuroRace Logo" class="logo-icon">
+                <img src="images/logo-icon.png" alt="NeuroRace Logo" class="logo-icon" onerror="this.style.display='none'">
                 <a href="#home" class="logo">
                     <span class="neuro">NEURO</span><span class="race">RACE</span>
                 </a>
@@ -705,12 +720,13 @@
             </div>
 
             <div class="nav-right" id="navRight">
-                <a href="https://vote.next.fiap.com.br" class="btn-vote-header" target="_blank">
+                <a href="https://www.fiap.com.br/next/experience/" class="btn-vote-header" target="_blank">
                     ⭐ VOTE NO NEXT!
                 </a>
                 <ul class="nav-links">
-                    <li><a href="#dashboard">Dashboard</a></li>
-                    <li><a href="#ranking">Ranking</a></li>
+                    <li><a href="#cadastro">Cadastre-se</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="ranking.html">Ranking</a></li>
                     <li><a href="#equipe">Equipe</a></li>
                 </ul>
             </div>
@@ -721,10 +737,9 @@
     <section class="hero" id="home">
         <div class="hero-container">
             <div class="hero-content">
-                <a href="https://vote.next.fiap.com.br" class="btn-vote-hero" target="_blank">
+                <a href="https://www.fiap.com.br/next/experience/" class="btn-vote-hero" target="_blank">
                     ⭐ VOTE NO NEXT!
                 </a>
-                
                 <h1>
                     <span class="onde-sua-mente">Onde Sua<br>Mente</span>
                     <span class="e-o">é o </span><span class="controle">Controle</span>
@@ -737,6 +752,55 @@
             
             <div class="hero-image">
                 <img src="images/mascot-running.png" alt="NeuroRace Mascot Winner" class="hero-mascot">
+            </div>
+        </div>
+    </section>
+
+    <!-- Cadastro Section - MOVIDO PARA CIMA -->
+    <section class="cadastro-section" id="cadastro" style="background: var(--bg-secondary); padding: 5rem 3rem; text-align: center;">
+        <div style="max-width: 700px; margin: 0 auto; text-align: center;">
+            <h2 style="font-size: 2.5rem; margin-bottom: 1rem; color: var(--accent-cyan);">
+                🎮 Cadastre-se para Jogar
+            </h2>
+            
+            <p style="font-size: 1.1rem; color: rgba(230, 241, 255, 0.8); margin-bottom: 3rem;">
+                Faça seu cadastro e participe da experiência NeuroRace no NEXT FIAP 2025!
+            </p>
+            
+            <div class="form-container">
+                <form id="cadastroForm">
+                    <div class="form-group">
+                        <label for="nome">Nome Completo *</label>
+                        <input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">E-mail *</label>
+                        <input type="email" id="email" name="email" required placeholder="seu@email.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="telefone">Telefone *</label>
+                        <input type="tel" id="telefone" name="telefone" required placeholder="(11) 99999-9999">
+                    </div>
+                    
+                    <button type="submit" class="btn-primary" style="width: 100%; margin-top: 1rem;">
+                        🚀 Cadastrar para Jogar
+                    </button>
+                </form>
+                
+                <div class="success-message" id="successMessage">
+                    ✅ Cadastro realizado com sucesso! Use seu email para acessar o Dashboard.
+                </div>
+                
+                <div class="error-message" id="errorMessage">
+                    ❌ Erro ao realizar cadastro. Tente novamente.
+                </div>
+                
+                <!-- Aviso LGPD -->
+                <p style="font-size: 0.85rem; color: rgba(230, 241, 255, 0.6); margin-top: 1.5rem; line-height: 1.8; text-align: left;">
+                    <strong>*</strong> Os dados coletados serão utilizados exclusivamente para identificar o(a) participante na entrega dos prêmios, sendo empregados apenas no dia <strong>08/11/2025</strong>, durante o <strong>NEXT FIAP Festival</strong>. Suas informações estão protegidas conforme a <strong>Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709/2018)</strong>.
+                </p>
             </div>
         </div>
     </section>
@@ -776,7 +840,7 @@
             </div>
             
             <div class="next-fiap-mascot">
-                <img src="images/logo-icon.png" alt="NeuroRace Mascot" class="mascot-running">
+                <img src="images/mascot-winner.png" alt="NeuroRace Mascot Running" class="mascot-running">
             </div>
         </div>
     </section>
@@ -801,48 +865,9 @@
             </div>
             
             <div class="social-links">
-                <a href="https://instagram.com" class="social-btn" target="_blank">📸 Instagram</a>
-                <a href="https://x.com" class="social-btn" target="_blank">✖️ X</a>
-                <a href="https://facebook.com" class="social-btn" target="_blank">👥 Facebook</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Dashboard Section -->
-    <section class="dashboard-section" id="dashboard">
-        <div class="dashboard-container">
-            <h2 class="dashboard-title">📊 Dashboard do(a) Competidor(a)</h2>
-            
-            <div class="form-container">
-                <h3 style="color: var(--accent-cyan); margin-bottom: 2rem; text-align: center;">Cadastro de Competidor</h3>
-                <form id="dashboardForm">
-                    <div class="form-group">
-                        <label for="nome">Nome Completo *</label>
-                        <input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">E-mail *</label>
-                        <input type="email" id="email" name="email" required placeholder="seu@email.com">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="telefone">Telefone *</label>
-                        <input type="tel" id="telefone" name="telefone" required placeholder="(11) 99999-9999">
-                    </div>
-                    
-                    <button type="submit" class="btn-primary" style="width: 100%; margin-top: 1rem;">
-                        🚀 Cadastrar e Acessar Dashboard
-                    </button>
-                </form>
-                
-                <div class="success-message" id="successMessage">
-                    ✅ Cadastro realizado com sucesso! Bem-vindo ao NeuroRace!
-                </div>
-                
-                <div class="error-message" id="errorMessage">
-                    ❌ Erro ao realizar cadastro. Tente novamente.
-                </div>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://neurorace-app.web.app" class="social-btn linkedin" target="_blank"><span class="icon">💼</span> LinkedIn</a>
+                <a href="https://instagram.com" class="social-btn instagram" target="_blank"><span class="icon">📸</span> Instagram</a>
+                <a href="https://x.com/intent/tweet?url=https://neurorace-app.web.app&text=Controlei%20um%20jogo%20com%20a%20mente%20no%20NeuroRace!%20%23NeuroRace%20%23NEXTFIAP" class="social-btn twitter" target="_blank"><span class="icon">✖️</span> X (Twitter)</a>
             </div>
         </div>
     </section>
@@ -897,14 +922,15 @@
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 
     <script>
-        // ⚠️ IMPORTANTE: SUBSTITUA COM SUAS CREDENCIAIS DO FIREBASE
+        // Configuração do Firebase
         const firebaseConfig = {
-            apiKey: "SUA_API_KEY_AQUI",
+            apiKey: "AIzaSyBKNlNVAJXTcJf75zljVMUdk9wR8Ouyvcc",
             authDomain: "neurorace-app.firebaseapp.com",
             projectId: "neurorace-app",
-            storageBucket: "neurorace-app.appspot.com",
-            messagingSenderId: "SEU_SENDER_ID_AQUI",
-            appId: "SEU_APP_ID_AQUI"
+            storageBucket: "neurorace-app.firebasestorage.app",
+            messagingSenderId: "482919413925",
+            appId: "1:482919413925:web:e0b7ceb47e22e79b1eb54c",
+            measurementId: "G-WDEZKGS6MJ"
         };
 
         // Inicializar Firebase
@@ -975,11 +1001,11 @@
         });
 
         // Formulário de Cadastro
-        const dashboardForm = document.getElementById('dashboardForm');
+        const cadastroForm = document.getElementById('cadastroForm');
         const successMessage = document.getElementById('successMessage');
         const errorMessage = document.getElementById('errorMessage');
 
-        dashboardForm.addEventListener('submit', async (e) => {
+        cadastroForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             
             // Ocultar mensagens anteriores
@@ -1019,24 +1045,17 @@
                         tempoMedioFoco: 0
                     });
                     
-                    // Sucesso!
+                    // Sucesso! Mostrar mensagem com instruções
+                    successMessage.innerHTML = '✅ Cadastro realizado com sucesso!<br><br>📊 Use seu email <strong>' + email + '</strong> para acessar o <a href="dashboard.html" style="color: #38bdf8; text-decoration: underline;">Dashboard</a> após jogar!';
                     successMessage.style.display = 'block';
-                    dashboardForm.reset();
+                    cadastroForm.reset();
                     
-                    // Ocultar mensagem após 5 segundos
-                    setTimeout(() => {
-                        successMessage.style.display = 'none';
-                    }, 5000);
                 } else {
                     // Firebase não configurado - simular sucesso
                     console.log('📝 Dados do competidor:', { nome, email, telefone });
-                    successMessage.textContent = '✅ Cadastro realizado! (Modo demo - configure o Firebase para salvar os dados)';
+                    successMessage.innerHTML = '✅ Cadastro realizado! (Modo demo - configure o Firebase para salvar os dados)<br><br>Use seu email para acessar o Dashboard após jogar.';
                     successMessage.style.display = 'block';
-                    dashboardForm.reset();
-                    
-                    setTimeout(() => {
-                        successMessage.style.display = 'none';
-                    }, 5000);
+                    cadastroForm.reset();
                 }
                 
             } catch (error) {
