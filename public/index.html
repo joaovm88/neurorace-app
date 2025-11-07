@@ -278,6 +278,10 @@
             color: var(--accent-pink);
         }
 
+        .conceito-highlight.neurosky {
+            color: var(--accent-pink);
+        }
+
         .conceito-highlight.tech {
             color: var(--accent-yellow);
         }
@@ -425,8 +429,8 @@
             color: var(--accent-cyan);
             padding: 0.8rem 1.5rem;
             border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.1rem;
+            font-weight: 500;
+            font-size: 1rem;
             border: 2px solid var(--accent-cyan);
             transition: all 0.3s;
         }
@@ -461,10 +465,11 @@
         /* Social Links */
         .social-section {
             padding: 3rem;
-            text-align: center;
+            text-align: center; 
         }
 
         .social-links {
+            width: 100%;
             display: flex;
             gap: 2rem;
             justify-content: center;
@@ -724,8 +729,8 @@
                     ⭐ VOTE NO NEXT!
                 </a>
                 <ul class="nav-links">
-                    <li><a href="#cadastro">Cadastre-se</a></li>
-                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="dashboard.html">Desempenho</a></li>
                     <li><a href="ranking.html">Ranking</a></li>
                     <li><a href="#equipe">Equipe</a></li>
                 </ul>
@@ -756,51 +761,24 @@
         </div>
     </section>
 
-    <!-- Cadastro Section - MOVIDO PARA CIMA -->
-    <section class="cadastro-section" id="cadastro" style="background: var(--bg-secondary); padding: 5rem 3rem; text-align: center;">
+    <!-- Como Funciona Section -->
+    <section id="como-funciona" style="background: var(--bg-secondary); padding: 5rem 3rem; text-align: center;">
         <div style="max-width: 700px; margin: 0 auto; text-align: center;">
             <h2 style="font-size: 2.5rem; margin-bottom: 1rem; color: var(--accent-cyan);">
-                🎮 Cadastre-se para Jogar
+                🎮 Já Jogou no NeuroRace?
             </h2>
             
             <p style="font-size: 1.1rem; color: rgba(230, 241, 255, 0.8); margin-bottom: 3rem;">
-                Faça seu cadastro e participe da experiência NeuroRace no NEXT FIAP 2025!
+                Depois de se divertir no jogo, volte aqui e descubra como você mandou bem!
             </p>
             
-            <div class="form-container">
-                <form id="cadastroForm">
-                    <div class="form-group">
-                        <label for="nome">Nome Completo *</label>
-                        <input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">E-mail *</label>
-                        <input type="email" id="email" name="email" required placeholder="seu@email.com">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="telefone">Telefone *</label>
-                        <input type="tel" id="telefone" name="telefone" required placeholder="(11) 99999-9999">
-                    </div>
-                    
-                    <button type="submit" class="btn-primary" style="width: 100%; margin-top: 1rem;">
-                        🚀 Cadastrar para Jogar
-                    </button>
-                </form>
-                
-                <div class="success-message" id="successMessage">
-                    ✅ Cadastro realizado com sucesso! Use seu email para acessar o Dashboard.
-                </div>
-                
-                <div class="error-message" id="errorMessage">
-                    ❌ Erro ao realizar cadastro. Tente novamente.
-                </div>
-                
-                <!-- Aviso LGPD -->
-                <p style="font-size: 0.85rem; color: rgba(230, 241, 255, 0.6); margin-top: 1.5rem; line-height: 1.8; text-align: left;">
-                    <strong>*</strong> Os dados coletados serão utilizados exclusivamente para identificar o(a) participante na entrega dos prêmios, sendo empregados apenas no dia <strong>08/11/2025</strong>, durante o <strong>NEXT FIAP Festival</strong>. Suas informações estão protegidas conforme a <strong>Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709/2018)</strong>.
-                </p>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem;">
+                <a href="dashboard.html" class="btn-primary" style="width: 100%; max-width: 280px;">
+                    📊 Ver Meu Desempenho
+                </a>
+                <a href="ranking.html" class="btn-primary btn-secondary" style="width: 100%; max-width: 280px;">
+                    🏆 Ver Ranking Geral
+                </a>
             </div>
         </div>
     </section>
@@ -812,8 +790,10 @@
         </h2>
         
         <p class="conceito-description">
-            Mais do que um jogo, é uma <strong>experiência imersiva</strong>: usando o sensor NeuroSky, nós lemos suas <span class="conceito-highlight neuro">ondas cerebrais</span> em tempo real. Quanto maior sua concentração, melhor seu desempenho. Quanto maior sua concentração, melhor seu desempenho.
+            Mais do que um jogo, é uma <strong>experiência imersiva</strong>: usando o sensor <strong class="conceito-highlight neurosky">NeuroSky</strong>, nós lemos suas <span class="conceito-highlight neuro">ondas cerebrais</span> em tempo real. Quanto maior sua concentração, melhor seu desempenho.
         </p>
+
+        <img src="images/concentracao.png" alt="Demonstração de concentração" style="max-width: 400px; width: 100%; height: auto; margin-top: 2rem; mix-blend-mode: lighten;">
     </section>
 
     <!-- Carrossel de Frases -->
@@ -852,16 +832,12 @@
                 Pronto para testar sua concentração?
             </h3>
             <p style="color: rgba(230, 241, 255, 0.8); margin-bottom: 2rem;">
-                Visite nosso stand no NEXT 24! Conecte o sensor NeuroSky e assuma o poder da sua mente!
+                Visite nosso stand no NEXT 25! Conecte o sensor NeuroSky e assuma o poder da sua mente!
             </p>
             
             <div class="hashtags">
-                <span class="hashtag">#NeuroRace</span>
-                <span class="hashtag pink">#MindControl</span>
-                <span class="hashtag yellow">#FocoPoder</span>
-                <span class="hashtag">#NEXTFIAP</span>
-                <span class="hashtag pink">#Neurofeedback</span>
-                <span class="hashtag yellow">#ConcentraçãoTotal</span>
+                <span class="hashtag yellow">#NeuroRace</span>
+                <span class="hashtag pink">#NEXTFIAP</span>
             </div>
             
             <div class="social-links">
@@ -913,7 +889,10 @@
     <footer>
         <p>© 2025 NeuroRace - Onde Sua Mente é o Controle</p>
         <p style="margin-top: 0.5rem; font-size: 0.9rem; color: rgba(230, 241, 255, 0.6);">
-            Projeto desenvolvido para o NEXT FIAP Festival
+            Projeto desenvolvido para o NEXT FIAP Festival.
+        </p>
+        <p style="font-size: 0.85rem; color: rgba(230, 241, 255, 0.6); margin-top: 1.5rem; line-height: 1.7; max-width: 700px; margin-left: auto; margin-right: auto;">
+            <strong>Proteção de Dados:</strong> Os dados coletados durante o jogo serão utilizados exclusivamente para identificar o(a) participante na entrega dos prêmios, sendo empregados apenas no dia <strong>08/11/2025</strong>, durante o <strong>NEXT FIAP Festival</strong>. Suas informações estão protegidas conforme a <strong>Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709/2018)</strong>.
         </p>
     </footer>
 
@@ -1000,88 +979,7 @@
             });
         });
 
-        // Formulário de Cadastro
-        const cadastroForm = document.getElementById('cadastroForm');
-        const successMessage = document.getElementById('successMessage');
-        const errorMessage = document.getElementById('errorMessage');
-
-        cadastroForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            // Ocultar mensagens anteriores
-            successMessage.style.display = 'none';
-            errorMessage.style.display = 'none';
-            
-            // Coletar dados do formulário
-            const nome = document.getElementById('nome').value;
-            const email = document.getElementById('email').value;
-            const telefone = document.getElementById('telefone').value;
-            
-            // Validação básica
-            if (!nome || !email || !telefone) {
-                errorMessage.textContent = '❌ Por favor, preencha todos os campos!';
-                errorMessage.style.display = 'block';
-                return;
-            }
-            
-            // Validação de email
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                errorMessage.textContent = '❌ Por favor, insira um e-mail válido!';
-                errorMessage.style.display = 'block';
-                return;
-            }
-            
-            try {
-                // Tentar salvar no Firestore
-                if (db) {
-                    await db.collection('competidores').add({
-                        nome: nome,
-                        email: email,
-                        telefone: telefone,
-                        dataCadastro: firebase.firestore.FieldValue.serverTimestamp(),
-                        nivel: 0,
-                        pontuacao: 0,
-                        tempoMedioFoco: 0
-                    });
-                    
-                    // Sucesso! Mostrar mensagem com instruções
-                    successMessage.innerHTML = '✅ Cadastro realizado com sucesso!<br><br>📊 Use seu email <strong>' + email + '</strong> para acessar o <a href="dashboard.html" style="color: #38bdf8; text-decoration: underline;">Dashboard</a> após jogar!';
-                    successMessage.style.display = 'block';
-                    cadastroForm.reset();
-                    
-                } else {
-                    // Firebase não configurado - simular sucesso
-                    console.log('📝 Dados do competidor:', { nome, email, telefone });
-                    successMessage.innerHTML = '✅ Cadastro realizado! (Modo demo - configure o Firebase para salvar os dados)<br><br>Use seu email para acessar o Dashboard após jogar.';
-                    successMessage.style.display = 'block';
-                    cadastroForm.reset();
-                }
-                
-            } catch (error) {
-                console.error('❌ Erro ao salvar:', error);
-                errorMessage.textContent = '❌ Erro ao realizar cadastro. Tente novamente.';
-                errorMessage.style.display = 'block';
-            }
-        });
-
-        // Máscara para telefone
-        const telefoneInput = document.getElementById('telefone');
-        telefoneInput.addEventListener('input', (e) => {
-            let value = e.target.value.replace(/\D/g, '');
-            
-            if (value.length <= 11) {
-                if (value.length <= 2) {
-                    e.target.value = value;
-                } else if (value.length <= 6) {
-                    e.target.value = `(${value.slice(0, 2)}) ${value.slice(2)}`;
-                } else if (value.length <= 10) {
-                    e.target.value = `(${value.slice(0, 2)}) ${value.slice(2, 6)}-${value.slice(6)}`;
-                } else {
-                    e.target.value = `(${value.slice(0, 2)}) ${value.slice(2, 7)}-${value.slice(7, 11)}`;
-                }
-            }
-        });
+        // O script de cadastro e máscara de telefone foram removidos.
     </script>
 </body>
 </html>
